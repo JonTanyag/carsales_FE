@@ -4,10 +4,3 @@ export enum CarType {
     TradieVehicle = 2,
     Unspecific = 3
 }
-
-export const CarTypeMapping = [
-    "Sports Car",
-    "Family Car",
-    "Tradie Vehicle",
-    "Not Specified",
-  ]

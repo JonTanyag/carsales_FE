@@ -8,9 +8,7 @@
 
             <div class="form-group">
                 <label for="description">Car Type:</label>
-                <select formControlName="carType" class="form-control" [(ngModel)]="payload.carType"
-                #mySelect
-                (change)='onOptionsSelected(mySelect.id)'>
+                <select formControlName="carType" class="form-control" [(ngModel)]="payload.carType">
                     <option *ngFor="let type of carType" [ngValue]="type.id">{{type.name}}</option>
                 </select>
             </div>

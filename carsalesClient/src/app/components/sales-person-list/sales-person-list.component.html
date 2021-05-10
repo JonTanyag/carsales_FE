@@ -1,0 +1,17 @@
+<div style="height: 400px; width: 500px;">
+    <div>
+        <ul style="background-color: cadetblue; height:200px">
+            <li style="height:20px;" *ngFor="let sales of salesPersonDataList.salesPerson; let i = index">
+                <div style="flex-direction: row;">
+                    <span style="color: black">{{sales.name}}</span>
+                    <div ng-if="sales.isAvailable">
+                        <span style="color: green">Available</span>
+                    </div>
+                    <div ng-if="!sales.isAvailable">
+                        <span style="color: red">Not Available</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+        <div [formGroup]=customerForm>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="customer" required [(ngModel)]="payload.customer" formControlName="customer" />
+            </div>
+
+            <div class="form-group">
+                <label for="description">Car Type:</label>
+                <select formControlName="carType" class="form-control" [(ngModel)]="payload.carType"
+                #mySelect
+                (change)='onOptionsSelected(mySelect.id)'>
+                    <option *ngFor="let type of carType" [ngValue]="type.id">{{type.name}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Language:</label>
+                <input type="checkbox" formControlName="speaksGreek" [checked]="payload.speaksGreek" (change)="payload.speaksGreek = !payload.speaksGreek" />
+            </div>
+
+            <button [disabled]="payload.customer === undefined" (click)="assignSalesPerson()" class="btn btn-success">Find Sales Person</button>
+        </div>
+    </div>
+</div>

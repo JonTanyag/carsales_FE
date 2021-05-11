@@ -6,15 +6,8 @@
                     <span class="data-name">{{sales.name}}</span>
                 </div>
                 <div class="data-status">
-                    <div ng-if="sales.isAvailable">
-                        <div class="status-available">
-                            {{sales.isAvailable}}
-                        </div>
-                    </div>
-                    <div ng-if="!sales.isAvailable">
-                        <div class="status-unavailable">
-                            {{sales.isAvailable}}
-                        </div>
+                    <div class="status-available">
+                        {{sales.isAvailable}}
                     </div>
                 </div>
             </li>

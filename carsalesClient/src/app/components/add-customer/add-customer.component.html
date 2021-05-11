@@ -3,7 +3,7 @@
         <div [formGroup]=customerForm>
             <div class="form-group">
                 <label for="name">Name: </label>
-                <input type="text" name="customer" class="form-control name-input" id="customer" formControlName="customer" />
+                <input type="text" name="customer" class="form-control name-input" id="customer" [(ngModel)]="payload.customer" formControlName="customer" />
             </div>
 
             <div class="form-group">

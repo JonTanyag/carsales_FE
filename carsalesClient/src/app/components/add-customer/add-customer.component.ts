@@ -45,15 +45,16 @@ export class AddCustomerComponent implements OnInit, OnDestroy {
 
   createForm() {
     this.customerForm = this.fb.group({
-      customer: ['', [Validators.required]],
+      customer: [''],
       carType: [''],
       speaksGreek: [false]
     })
 
-    // this.customerForm.valueChanges.subscribe(newVal => console.log(newVal));
+    this.customerForm.valueChanges.subscribe(newVal => console.log(newVal));
   }
 
   assignSalesPerson() {
+    console.log('PAYLOAD: ', this.payload);
     this._carSalesService.assignSalesPerson(this.payload)
       .subscribe(
         response => {

@@ -1,24 +1,26 @@
-<div style="width: 500px; margin: auto;">
+<div class="main">
     <div class="submit-form">
         <div [formGroup]=customerForm>
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="customer" required [(ngModel)]="payload.customer" formControlName="customer" />
+                <label for="name">Name: </label>
+                <input type="text" name="customer" class="form-control name-input" id="customer" formControlName="customer" />
             </div>
 
             <div class="form-group">
-                <label for="description">Car Type:</label>
-                <select formControlName="carType" class="form-control" [(ngModel)]="payload.carType">
+                <label for="description">Car Type: </label>
+                <select name="carType" formControlName="carType" class="form-control car-type-select" >
                     <option *ngFor="let type of carType" [ngValue]="type.id">{{type.name}}</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="description">Language:</label>
-                <input type="checkbox" formControlName="speaksGreek" [checked]="payload.speaksGreek" (change)="payload.speaksGreek = !payload.speaksGreek" />
+                <label for="description">Language: </label>
+                <input class="language" name="speaksGreek" type="checkbox" formControlName="speaksGreek" [checked]="payload.speaksGreek" (change)="payload.speaksGreek = !payload.speaksGreek" />
             </div>
 
-            <button [disabled]="payload.customer === undefined" (click)="assignSalesPerson()" class="btn btn-success">Find Sales Person</button>
+            <div class="form-group btn-section">
+                <button [disabled]="!customerForm?.get('customer')?.value" (click)="assignSalesPerson()" class="btnClass">Find Sales Person</button>
+            </div>
         </div>
     </div>
 </div>

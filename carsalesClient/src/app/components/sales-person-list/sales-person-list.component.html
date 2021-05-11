@@ -1,14 +1,20 @@
-<div style="height: 400px; width: 500px;">
+<div class="main">
     <div>
-        <ul style="background-color: cadetblue; height:200px">
-            <li style="height:20px;" *ngFor="let sales of salesPersonDataList.salesPerson; let i = index">
-                <div style="flex-direction: row;">
-                    <span style="color: black">{{sales.name}}</span>
+        <ul class="list-content">
+            <li class="list-height" *ngFor="let sales of salesPersonDataList.salesPerson; let i = index">
+                <div class="data-section">
+                    <span class="data-name">{{sales.name}}</span>
+                </div>
+                <div class="data-status">
                     <div ng-if="sales.isAvailable">
-                        <span style="color: green">Available</span>
+                        <div class="status-available">
+                            {{sales.isAvailable}}
+                        </div>
                     </div>
                     <div ng-if="!sales.isAvailable">
-                        <span style="color: red">Not Available</span>
+                        <div class="status-unavailable">
+                            {{sales.isAvailable}}
+                        </div>
                     </div>
                 </div>
             </li>

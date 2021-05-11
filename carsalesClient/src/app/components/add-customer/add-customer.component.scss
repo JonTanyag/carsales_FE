@@ -1,0 +1,42 @@
+.main {
+    width: 500px; 
+    margin: auto;
+
+    .name-input {
+        width: 300px;
+        padding: 7px 14px;
+        margin: 16px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .car-type-select {
+        width: 300px;
+        padding: 7px 14px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .language {
+        margin: 12px;
+    }
+    .btn-section {
+        display: flex;
+        position: absolute;
+        right: 339px;
+
+        .btnClass {
+            height: 30px;
+            width: 150px;
+            background-color: darkcyan;
+            border-radius: 5px;
+        }
+    }
+
+    
+    
+}

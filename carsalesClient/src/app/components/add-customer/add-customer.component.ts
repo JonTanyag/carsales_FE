@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PayloadModel } from '../../shared/models/payloadModel';
 import { CarType } from '../../shared/models/car-type';
 import { CarSalesService } from '../../shared/service/carsales.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr'
 import { CustomerModel } from 'src/app/shared/models/customer-model';
+import { StoreService } from '../../shared/service/store.service';
 
 @Component({
   selector: 'app-add-customer',
   templateUrl: './add-customer.component.html',
   styleUrls: ['./add-customer.component.scss']
 })
-export class AddCustomerComponent implements OnInit {
+export class AddCustomerComponent implements OnInit, OnDestroy {
 
   cars = CarType;
   payload = new PayloadModel;
@@ -27,13 +28,19 @@ export class AddCustomerComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private fb: FormBuilder,
-    private _carSalesService: CarSalesService
+    private _carSalesService: CarSalesService,
+    private _storeService: StoreService
   ) {
     this.customerDataList = new CustomerModel;
+    this.createForm();
+  }
+
+  ngOnDestroy(): void {
+    this._storeService.$CustomerSubject.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.createForm();
+    
   }
 
   createForm() {
@@ -43,39 +50,52 @@ export class AddCustomerComponent implements OnInit {
       speaksGreek: [false]
     })
 
-    this.customerForm.valueChanges.subscribe(newVal => console.log(newVal));
-    console.log('PAYLOAD: ', this.payload)
+    // this.customerForm.valueChanges.subscribe(newVal => console.log(newVal));
   }
 
   assignSalesPerson() {
-    console.log('PAYLOAD: ', this.payload)
     this._carSalesService.assignSalesPerson(this.payload)
       .subscribe(
         response => {
-          this._carSalesService.getCustomers();
+          this.getCustomers();
+          this.getSalesPersons();
           console.log('SUCCESS: ', response);
-          // this.showSuccess(response);
+          this.showSuccess(response);
         },
         error => {
           console.log('ERROR: ', error);
-          this._carSalesService.getCustomers().subscribe(
-            cust => {
-              this.customerDataList = cust;
-              console.log('HAHAHAHAHA', this.customerDataList);
-            },
-            err => {
-              console.log(err);
-            }
-          );
+
         });
-
-
   }
 
   showSuccess(message: string) {
+    console.log('TOAST')
     this.toastr.success(message)
-    this._carSalesService.getCustomers();
   }
 
+  getCustomers() {
+    this._carSalesService.getCustomers()
+      .subscribe(
+        cust => {
+          this._storeService.$CustomerSubject.next(cust);
+          console.log('Customer Details: ', cust);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
 
+  getSalesPersons() {
+    this._carSalesService.getSalesPerson()
+      .subscribe(
+        cust => {
+          this._storeService.$SalesPersonSubject.next(cust);
+          console.log('Sales Person Details: ', cust);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
 }

@@ -1,0 +1,31 @@
+.main {
+    height: 489px; 
+    width: 500px;
+
+    .add-section {
+        height: 200px;
+        width: 300px;
+    }
+
+    .customer-list {
+        display: flex;
+        border-width: 1px;
+        border-color: black;
+        width: 500px !important;
+
+        .data-table {
+            justify-content: center;
+
+            th {
+                text-align: left !important;
+                vertical-align: middle !important;
+                width: 230px !important;
+            }
+            td {
+                text-align: left !important;
+                vertical-align: middle !important;
+                width: 200px !important;
+            }
+        }
+    }    
+}

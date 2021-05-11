@@ -1,17 +1,25 @@
-<div style="height: 400px; width: 500px;">
-    <div>
+<div class="main">
+    <div class="add-section">
         <app-add-customer></app-add-customer>
     </div>
-    <div>
-        <ul style="background-color: green; height:100px">
-            <li style="height:20px;" *ngFor="let customer of customerDataList.customers; let i = index">
-                <div style="flex-direction: column;">
-                    <span style="color: black">{{customer.customerName}}</span>
-                    <span style="color: black">{{customer.salesName}}</span>
-                    <span style="color: black">{{customer.car}}</span>
-                    <span style="color: black">{{customer.language}}</span>
-                </div>
-            </li>
-        </ul>
+    <div class="customer-list">
+        <table datatable class="data-table" striped="true">
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>Sales Representative</th>
+                <th>Car Type</th>
+                <th>Language</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of customerDataList.customers; let i = index">
+                <td>{{ customer.customerName }}</td>
+                <td>{{ customer.salesName }}</td>
+                <td>{{ customer.car }}</td>
+                <td>{{ customer.language }}</td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 </div>

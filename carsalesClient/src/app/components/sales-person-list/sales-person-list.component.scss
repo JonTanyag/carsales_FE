@@ -1,0 +1,37 @@
+.main {
+    height: 170px; 
+    width: 500px;
+
+    .list-content {
+        background-color: cadetblue;
+        height:200px;
+
+        .list-height {
+            height:20px;
+
+            .data-section {
+                flex-direction: column;
+
+                .data-name {
+                    color: black;
+                }
+            }
+
+            .data-status {
+                margin-left: 120px !important;
+
+                .status-available {
+                    color: green;
+                    height: 20px !important;
+                    width: 20px !important;
+                }
+
+                .status-unavailable {
+                    color: red;
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+        }
+    }
+}
